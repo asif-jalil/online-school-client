@@ -1,0 +1,421 @@
+/* prettier-ignore */
+@use 'sass:math';
+@import "colors";
+$variable-prefix: "cloudhr-";
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+// scss-docs-start container-max-widths
+$container-max-widths: () !default;
+$container-max-widths: map-merge(
+  (
+    sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: 1140px,
+    // xxl: 1320px,
+  ),
+  $container-max-widths
+);
+
+$grid-breakpoints: () !default;
+$grid-breakpoints: map-merge(
+  (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    // xxl: 1400px,
+  ),
+  $grid-breakpoints
+);
+
+//*-----------------------------------------------
+//|   Gutter
+//-----------------------------------------------*/
+$grid-gutter-width: 2rem !default;
+
+// Customize the light and dark text colors for use in our color contrast function.
+// $color-contrast-dark: $gray-800 !default;
+
+// Min contrast ratio
+$min-contrast-ratio: 2 !default;
+
+//*-----------------------------------------------
+//|   Brand colors
+//-----------------------------------------------*/
+$linkedin: #0077b5 !default;
+$facebook: #3b5998 !default;
+$twitter: #1da1f2 !default;
+$google-plus: #db4437 !default;
+$github: #24292e !default;
+$youtube: #ff0001 !default;
+
+$brand-colors: () !default;
+$brand-colors: map-merge(
+  (
+    "facebook": $facebook,
+    "google-plus": $google-plus,
+    "twitter": $twitter,
+    "linkedin": $linkedin,
+    "youtube": $youtube,
+    "github": $github,
+  ),
+  $brand-colors
+);
+
+//*-----------------------------------------------
+//|   Border
+//-----------------------------------------------*/
+$border-color: var(--#{$variable-prefix}border-color);
+$border-width: 1px !default;
+
+// Options
+//
+// Quickly modify global styling by enabling or disabling optional features.
+
+$enable-shadows: true !default;
+$enable-gradients: false !default;
+$enable-negative-margins: true !default;
+$enable-rfs: false;
+
+$component-active-color: var(--#{$variable-prefix}primary) !default;
+
+//*-----------------------------------------------
+//|   Shadow
+//-----------------------------------------------*/
+$box-shadow: var(--#{$variable-prefix}box-shadow) !default;
+$box-shadow-sm: var(--#{$variable-prefix}box-shadow-sm) !default;
+$box-shadow-lg: var(--#{$variable-prefix}box-shadow-lg) !default;
+$box-shadow-inset: var(--#{$variable-prefix}box-shadow-inset) !default;
+
+//*-----------------------------------------------
+//|   Spacing
+//----------------------------------------------
+
+$spacer: 1rem !default;
+$spacers: () !default;
+
+$spacers: map-merge(
+  (
+    0: 0,
+    1: $spacer * 0.25,
+    // 4
+    2: $spacer * 0.5,
+    // 8
+    3: $spacer,
+    // 16
+    4: $spacer * 1.8,
+    // 28.8
+    5: $spacer * 3,
+    // 48
+    6: $spacer * 4,
+    // 64
+    7: $spacer * 5,
+    // 80
+    8: $spacer * 7.5,
+    // 120
+    9: $spacer * 10,
+    // 160
+    10: $spacer * 12.5,
+    // 200
+    11: $spacer * 15 // 240,,,,,,,,,,,,,,,,,,,,,,
+  ),
+  $spacers
+);
+
+//*-----------------------------------------------
+//|   Body
+//-----------------------------------------------*/
+
+$body-bg: $gray-100 !default;
+$body-color: $gray-900 !default;
+
+//*-----------------------------------------------
+//|   Link
+//-----------------------------------------------*/
+$link-decoration: none !default;
+$link-hover-decoration: underline !default;
+
+//*-----------------------------------------------
+//|   Components
+//-----------------------------------------------*/
+$border-radius: 0.25rem;
+$border-radius-sm: 0.2rem;
+$border-radius-lg: 0.3rem;
+$border-radius-pill: 50rem;
+
+//*-----------------------------------------------
+//|   Fonts Families
+//-----------------------------------------------*/
+$font-family-sans-serif: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+  "Segoe UI Emoji", "Segoe UI Symbol" !default;
+$font-family-monospace: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$font-family-base: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+  "Segoe UI Emoji", "Segoe UI Symbol" !default;
+
+//*-----------------------------------------------
+//|   Fonts
+//-----------------------------------------------*/
+$type-scale: 1.333 !default;
+$font-size-base: 1rem !default;
+$font-sizes: () !default;
+$font-sizes: map-merge(
+  (
+    "-2": math.div(1, pow($type-scale, 2)) * $font-size-base,
+    //11.11
+    "-1": math.div(1, $type-scale) * $font-size-base,
+    //13.33
+    0: $font-size-base,
+    //16
+    1: pow($type-scale, 1) * $font-size-base,
+    // 19.2
+    2: pow($type-scale, 2) * $font-size-base,
+    // 23.04
+    3: pow($type-scale, 3) * $font-size-base,
+    // 27.65
+    4: pow($type-scale, 4) * $font-size-base,
+    // 33.18
+    5: pow($type-scale, 5) * $font-size-base,
+    // 39.81
+    6: pow($type-scale, 6) * $font-size-base,
+    // 47.78
+    7: pow($type-scale, 7) * $font-size-base,
+    // 57.33
+    8: pow($type-scale, 8) * $font-size-base,
+    // 68.79
+  ),
+  $font-sizes
+);
+
+$font-size-sm: $font-size-base * 0.875 !default;
+$font-size-lg: $font-size-base * 1.333 !default;
+$font-weight-thin: 100 !default;
+$font-weight-lighter: 200 !default;
+$font-weight-light: 300 !default;
+$font-weight-normal: 400 !default;
+$font-weight-medium: 500 !default;
+$font-weight-semi-bold: 600 !default;
+$font-weight-bold: 700 !default;
+$font-weight-bolder: 800 !default;
+$font-weight-black: 900 !default;
+
+$h1-font-size: map_get($font-sizes, 5) !default;
+$h2-font-size: map_get($font-sizes, 4) !default;
+$h3-font-size: map_get($font-sizes, 3) !default;
+$h4-font-size: map_get($font-sizes, 2) !default;
+$h5-font-size: map_get($font-sizes, 1) !default;
+$h6-font-size: map_get($font-sizes, "-1") !default;
+
+$headings-font-family: $font-family-sans-serif !default;
+$headings-font-weight: $font-weight-medium !default;
+$headings-color: var(--#{$variable-prefix}headings-color) !default;
+
+// scss-docs-start display-headings
+$display-font-sizes: () !default;
+$display-font-sizes: map-merge(
+  (
+    1: map_get($font-sizes, 8),
+    2: map_get($font-sizes, 7),
+    3: map_get($font-sizes, 6),
+    4: map_get($font-sizes, 5),
+    5: map_get($font-sizes, 4),
+    6: map_get($font-sizes, 3),
+  ),
+  $display-font-sizes
+);
+
+$display-font-weight: $font-weight-black !default;
+$display-line-height: 1 !default;
+// scss-docs-end display-headings
+
+$lead-font-size: $font-size-lg !default;
+$lead-font-weight: $font-weight-normal !default;
+
+$small-font-size: 75% !default;
+
+$text-muted: $gray-500 !default;
+
+$blockquote-font-size: $font-size-lg !default;
+
+$line-height-base: 1.45;
+$line-height-sm: 1.25;
+$line-height-lg: 2;
+$line-height-xs: 1.15;
+
+$hr-height: 1px;
+$hr-opacity: 0.6;
+
+//*-----------------------------------------------
+//|   Buttons
+//-----------------------------------------------*/
+// $btn-box-shadow: 0 0 0 transparent;
+
+// $btn-border-radius: 0;
+// $btn-border-radius-sm: 0;
+// $btn-border-radius-lg: 0;
+
+//*-----------------------------------------------
+//|   Buttons and Forms
+//-----------------------------------------------*/
+$input-btn-padding-y: $spacer * 0.6 !default;
+$input-btn-padding-x: $spacer * 1.5 !default;
+// $input-btn-font-size: map-get($font-sizes, "-1");
+// $input-btn-line-height: 1.5;
+
+// $input-btn-padding-y-sm: $spacer * 0.4 !default;
+// $input-btn-padding-x-sm: $spacer * 1.2 !default;
+// $input-btn-font-size-sm: map-get($font-sizes, '-1');
+
+// $input-btn-padding-y-lg: $spacer * 1.2 !default;
+// $input-btn-padding-x-lg: $spacer * 5 !default;
+// $input-btn-font-size-lg: $font-size-base;
+
+// $input-padding-y: $spacer * 0.375;
+// $input-padding-x: $spacer * 0.75;
+
+// $input-padding-y-lg: $spacer * 0.5;
+// $input-padding-x-lg: $spacer * 0.5;
+
+// $input-btn-border-width: 2px;
+// $btn-font-weight: $font-weight-semi-bold !default;
+
+//*-----------------------------------------------
+//|   Forms
+//-----------------------------------------------*/
+// $input-font-family: $font-family-base;
+// $input-padding-y: $spacer * 0.8;
+// $input-padding-x: $spacer * 0.8;
+$input-bg: var(--#{$variable-prefix}white);
+// $input-focus-bg: var(--#{$variable-prefix}white);
+// $form-check-input-checked-bg-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
+// $input-border-color: var(--#{$variable-prefix}input-border-color) !default;
+// $input-border-radius: 0;
+// $input-border-width: 1px;
+$input-box-shadow: 0 0 0 transparent;
+$form-label-font-weight: $font-weight-semi-bold;
+// $form-select-box-shadow: 0 0 0 transparent;
+// $form-label-font-size: $font-size-base;
+// $input-font-size: $font-size-base;
+
+//*-----------------------------------------------
+//|   Z-index
+//-----------------------------------------------*/
+
+// $zindex-sticky: 1015 !default;
+
+//*-----------------------------------------------
+//|   Navigation
+//-----------------------------------------------*/
+$nav-link-color: $white;
+$nav-link-hover-color: $secondary;
+// $navbar-nav-link-padding-x: $spacer * 1.2;
+// $nav-link-padding-y: 0.4rem;
+// $nav-link-font-weight: $font-weight-semi-bold;
+// $navbar-brand-padding-y: 0.31rem;
+// $navbar-padding-x: 1rem;
+// $navbar-light-hover-color: $primary;
+
+// $navbar-font-size: $font-size-base !default;
+
+// $standard-nav-height: 3.5625rem !default;
+
+// // Navbar Glass
+
+// $bg-navbar-glass: var(--#{$variable-prefix}bg-navbar-glass) !default;
+
+//*-----------------------------------------------
+//|   Pagination
+//-----------------------------------------------*/
+// $pagination-padding-y: 0.5rem !default;
+// $pagination-padding-x: 0.75rem !default;
+// $pagination-padding-y-sm: 0.25rem !default;
+// $pagination-padding-x-sm: 0.5rem !default;
+// $pagination-padding-y-lg: 0.75rem !default;
+// $pagination-padding-x-lg: 1.5rem !default;
+
+// $pagination-color: var(--#{$variable-prefix}pagination-color) !default;
+// $pagination-bg: var(--#{$variable-prefix}pagination-bg) !default;
+// $pagination-border-color: var(--#{$variable-prefix}pagination-border-color) !default;
+// $pagination-focus-color: var(--#{$variable-prefix}pagination-focus-color) !default;
+// $pagination-focus-bg: var(--#{$variable-prefix}pagination-focus-bg) !default;
+// $pagination-focus-box-shadow: var(--#{$variable-prefix}pagination-focus-box-shadow) !default;
+// $pagination-hover-color: var(--#{$variable-prefix}pagination-hover-color) !default;
+// $pagination-hover-bg: var(--#{$variable-prefix}pagination-hover-bg) !default;
+// $pagination-hover-border-color: var(--#{$variable-prefix}pagination-hover-border-color) !default;
+// $pagination-active-color: var(--#{$variable-prefix}pagination-active-color) !default;
+// $pagination-active-bg: var(--#{$variable-prefix}pagination-active-bg) !default;
+// $pagination-active-border-color: var(--#{$variable-prefix}pagination-active-border-color) !default;
+// $pagination-disabled-color: var(--#{$variable-prefix}pagination-disabled-color) !default;
+// $pagination-disabled-bg: var(--#{$variable-prefix}pagination-disabled-bg) !default;
+// $pagination-disabled-border-color: var(--#{$variable-prefix}pagination-disabled-border-color) !default;
+// $pagination-border-radius: 0.25rem;
+
+//*-----------------------------------------------
+//|   Cards
+//-----------------------------------------------*/
+$card-spacer-y: map_get($spacers, 4) !default;
+$card-spacer-x: map_get($spacers, 4) !default;
+$card-border-width: 0 !default;
+$card-border-radius: $border-radius-lg !default;
+$card-border-color: var(--#{$variable-prefix}card-border-color) !default;
+$card-cap-bg: var(--#{$variable-prefix}card-cap-bg) !default;
+$card-cap-padding-y: $spacer !default;
+$card-cap-padding-x: 1.25rem !default;
+$card-bg: var(--#{$variable-prefix}card-bg);
+
+//*=============================================
+//|   Theme Specific
+//=============================================
+
+//*-----------------------------------------------
+//|   Viewport Heights & Widths
+//----------------------------------------------
+
+$viewport-heights: () !default;
+$viewport-heights: map-merge(
+  (
+    25: 25vh,
+    50: 50vh,
+    75: 75vh,
+    100: 100vh,
+  ),
+  $viewport-heights
+);
+
+$viewport-widths: () !default;
+$viewport-widths: map-merge(
+  (
+    25: 25vw,
+    50: 50vw,
+    75: 75vw,
+    100: 100vw,
+  ),
+  $viewport-widths
+);
+
+$sizes: () !default;
+$sizes: map-merge(
+  (
+    25: 25%,
+    50: 50%,
+    75: 75%,
+    100: 100%,
+    auto: auto,
+  ),
+  $sizes
+);
+
+$gutters: () !default;
+$gutters: map-merge(
+  $spacers,
+  (
+    card: $card-spacer-x * 2,
+  )
+);
+
+//*-----------------------------------------------
+//|   Scrollbar
+//-----------------------------------------------*/
+$scrollbar-bg: var(--#{$variable-prefix}scrollbar-bg) !default;

@@ -1,0 +1,67 @@
+/*-----------------------------------------------
+|   Object fit and Z-index
+-----------------------------------------------*/
+.fit-cover {
+	object-fit: cover;
+}
+.z-index-1 {
+	z-index: 1 !important;
+}
+.z-index-2 {
+	z-index: 2 !important;
+}
+.z-index--1 {
+	z-index: -1 !important;
+}
+
+/*-----------------------------------------------
+|   Miscellaneous
+-----------------------------------------------*/
+
+.hover-text-decoration-none {
+	@include hover-focus {
+		text-decoration: none;
+	}
+}
+
+[data-dismiss='dropdown'],
+[data-bs-offset-top],
+[data-bs-toggle='collapse'],
+[data-bs-toggle='tooltip'],
+[data-bs-toggle='popover'] {
+	* {
+		pointer-events: none;
+	}
+}
+
+/*-----------------------------------------------
+|   Outline
+-----------------------------------------------*/
+
+.outline-none {
+	outline: none;
+	box-shadow: none;
+	@include hover-focus {
+		outline: none;
+		box-shadow: none;
+	}
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                 Transition                                 */
+/* -------------------------------------------------------------------------- */
+
+.transition-base {
+	transition: $transition-base;
+}
+.transition-none {
+	transition: none;
+}
+
+.fsp-75 {
+	font-size: 75%;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                    Width                                   */
+/* -------------------------------------------------------------------------- */

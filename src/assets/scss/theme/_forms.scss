@@ -1,0 +1,30 @@
+/*-----------------------------------------------
+|   Form
+-----------------------------------------------*/
+
+.form-check-label {
+  line-height: 1.45rem;
+}
+
+/*-----------------------------------------------
+|   Theme Checkbox
+-----------------------------------------------*/
+.form-check {
+  @each $color, $value in $theme-colors {
+    &-input {
+      &-#{$color} {
+        border-color: $value !important;
+        &:focus {
+          box-shadow: 0 0 $input-btn-focus-blur $input-btn-focus-width rgba($value, $input-btn-focus-color-opacity);
+        }
+        &:checked {
+          background-color: $value !important;
+        }
+      }
+    }
+  }
+}
+
+input[type="file"].form-control-lg {
+  line-height: 1.813rem;
+}
