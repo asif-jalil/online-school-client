@@ -34,11 +34,7 @@ const AuthRoute = ({
 					);
 				}
 
-				if (
-					permission &&
-					app.brand &&
-					!permission.includes(app.brand.userRole)
-				) {
+				if (permission && !permission.includes(app.user.role)) {
 					return <Redirect to={redirectTo || "/"} />;
 				}
 

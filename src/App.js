@@ -13,6 +13,7 @@ import GuestRoute from "routes/GuestRoute";
 import API from "utils/API";
 import authTokenStorage from "utils/authTokenStorage";
 import generateURL from "utils/generateURL";
+import { ADMIN } from "utils/role.const";
 
 const routes = [
 	{
@@ -24,6 +25,13 @@ const routes = [
 	{
 		route: AuthRoute,
 		path: "/profile",
+		component: Profile,
+		exact: true
+	},
+	{
+		route: AuthRoute,
+		path: "/management",
+		permission: [ADMIN],
 		component: Profile,
 		exact: true
 	},
@@ -93,6 +101,7 @@ function App() {
 					const { route: Route, ...rest } = route;
 					return <Route key={i} {...rest} />;
 				})}
+				<Redirect to="/" />
 			</Switch>
 		</>
 	);
