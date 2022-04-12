@@ -419,3 +419,28 @@ $gutters: map-merge(
 //|   Scrollbar
 //-----------------------------------------------*/
 $scrollbar-bg: var(--#{$variable-prefix}scrollbar-bg) !default;
+
+//*-----------------------------------------------
+//|   React Tostify
+//-----------------------------------------------*/
+$rt-namespace: 'Toastify';
+$rt-toast-width: 250px;
+$rt-toast-background: #ffffff;
+$rt-toast-min-height: 60px;
+$rt-toast-max-height: 800px;
+
+$rt-color-default: $white;
+$rt-color-dark: $dark;
+$rt-color-success: $success;
+$rt-color-info: $info;
+$rt-color-warning: $warning;
+$rt-color-error: $danger;
+
+$rt-text-color-default: $white;
+$rt-text-color-dark: $white;
+
+$rt-color-progress-default: $gray-400;
+$rt-color-progress-dark: $gray-400;
+$rt-mobile: 'only screen and (max-width : 480px)';
+$rt-font-family: $font-family-base;
+$rt-z-index: 9999;

@@ -1,10 +1,18 @@
+import { SIGN_OUT } from "actionTypes/appActionTypes";
 import classNames from "classnames";
+import useAppDispatch from "hooks/useAppDispatch";
 import useUser from "hooks/useUser";
 import React, { useState } from "react";
 import { Button, Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import authTokenStorage from "utils/authTokenStorage";
 
 const routes = [
+	{
+		label: "Home",
+		to: "/",
+		icon: "fas fa-home"
+	},
 	{
 		label: "Profile",
 		to: "/profile",
@@ -15,6 +23,16 @@ const routes = [
 const SideNav = () => {
 	const [isSidebarActive, setIsSidebarActive] = useState(false);
 	const user = useUser();
+	const dispatch = useAppDispatch();
+
+	const handleLogout = e => {
+    e.preventDefault();
+    
+		authTokenStorage.removeToken();
+		dispatch({
+			type: SIGN_OUT
+		});
+	};
 
 	if (user) {
 		return (
@@ -35,7 +53,7 @@ const SideNav = () => {
 							<i className="fas fa-bars"></i>
 						)}
 					</Button>
-					<h4 className="text-white mb-5 mt-4 ps-4 pe-3">Hello, Stranger</h4>
+					<h4 className="text-white mb-5 mt-4 ps-4 pe-3">Hello, {user.name}</h4>
 					<Nav className="flex-column px-4 ms-n3">
 						{routes.map(route => (
 							<NavLink
@@ -48,6 +66,9 @@ const SideNav = () => {
 								<i className={`me-2 ${route.icon}`}></i> {route.label}
 							</NavLink>
 						))}
+						<Button variant="danger" onClick={handleLogout} className="mt-5">
+							<i className="me-2 fas fa-sign-out"></i> Logout
+						</Button>
 					</Nav>
 				</div>
 			</div>

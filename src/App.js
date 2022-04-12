@@ -1,13 +1,10 @@
 import { APP_LOADED } from "actionTypes/appActionTypes";
 import Auth from "components/auth/Auth";
 import Dashboard from "components/dashboard/Dashboard";
-import Layout from "components/layout/Layout";
-import SideNav from "components/navbar/SideNav";
-import TopNav from "components/navbar/TopNav";
+import Profile from "components/profile/Profile";
 import useApp from "hooks/useApp";
 import usePrevious from "hooks/usePrevious";
 import { useCallback, useEffect } from "react";
-import { Container } from "react-bootstrap";
 import { Switch } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import { useLocation } from "react-router-dom";
@@ -22,6 +19,12 @@ const routes = [
 		route: AuthRoute,
 		path: "/",
 		component: Dashboard,
+		exact: true
+	},
+	{
+		route: AuthRoute,
+		path: "/profile",
+		component: Profile,
 		exact: true
 	},
 	{
@@ -84,12 +87,14 @@ function App() {
 		}
 	}, [location, prevLocation]);
 	return (
-		<Switch>
-			{routes.map((route, i) => {
-				const { route: Route, ...rest } = route;
-				return <Route key={i} {...rest} />;
-			})}
-		</Switch>
+		<>
+			<Switch>
+				{routes.map((route, i) => {
+					const { route: Route, ...rest } = route;
+					return <Route key={i} {...rest} />;
+				})}
+			</Switch>
+		</>
 	);
 }
 
