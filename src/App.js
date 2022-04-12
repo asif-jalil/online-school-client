@@ -1,19 +1,24 @@
+import { APP_LOADED } from "actionTypes/appActionTypes";
 import Auth from "components/auth/Auth";
 import Dashboard from "components/dashboard/Dashboard";
+import Layout from "components/layout/Layout";
+import SideNav from "components/navbar/SideNav";
 import TopNav from "components/navbar/TopNav";
 import useApp from "hooks/useApp";
 import usePrevious from "hooks/usePrevious";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { Switch } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import AuthRoute from "routes/AuthRoute";
 import GuestRoute from "routes/GuestRoute";
+import API from "utils/API";
+import authTokenStorage from "utils/authTokenStorage";
 import generateURL from "utils/generateURL";
 
 const routes = [
-  {
+	{
 		route: AuthRoute,
 		path: "/",
 		component: Dashboard,
@@ -41,6 +46,36 @@ function App() {
 	const location = useLocation();
 	const prevLocation = usePrevious(location);
 
+	const loadAuthUser = useCallback(() => {
+		API.get("/auth/user")
+			.then(res => res.data)
+			.then(res => {
+				if (res && res.user) {
+					const { brands, ...user } = res.user;
+					dispatch({
+						type: APP_LOADED,
+						payload: { user, brands }
+					});
+				} else {
+					authTokenStorage.removeToken();
+					dispatch({
+						type: APP_LOADED,
+						payload: {}
+					});
+				}
+			})
+			.catch(() => {
+				authTokenStorage.removeToken();
+				dispatch({
+					type: APP_LOADED,
+					payload: {}
+				});
+			});
+	}, [dispatch]);
+
+	// load auth user
+	useEffect(loadAuthUser, [loadAuthUser]);
+
 	useEffect(() => {
 		const prevUrl = generateURL(prevLocation);
 		const url = generateURL(location);
@@ -49,17 +84,12 @@ function App() {
 		}
 	}, [location, prevLocation]);
 	return (
-		<>
-			<TopNav />
-			<Container fluid>
-				<Switch>
-					{routes.map((route, i) => {
-						const { route: Route, ...rest } = route;
-						return <Route key={i} {...rest} />;
-					})}
-				</Switch>
-			</Container>
-		</>
+		<Switch>
+			{routes.map((route, i) => {
+				const { route: Route, ...rest } = route;
+				return <Route key={i} {...rest} />;
+			})}
+		</Switch>
 	);
 }
 

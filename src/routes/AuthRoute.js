@@ -3,9 +3,10 @@ import PropTypes from "prop-types";
 import { Route, Redirect } from "react-router-dom";
 import useApp from "hooks/useApp";
 import isInMaintenanceMode from "utils/isInMaintenanceMode";
+import Layout from "components/layout/Layout";
 
 const AuthRoute = ({
-	layout: Layout,
+	layout: CustomLayout,
 	component: Component,
 	render,
 	permission,
@@ -44,26 +45,21 @@ const AuthRoute = ({
 				let content = null;
 
 				if (Component) {
-					content = (
-						<Component
-							{...props}
-							user={app.user}
-						/>
-					);
+					content = <Component {...props} user={app.user} />;
 				} else if (render) {
 					content = render({
 						...props,
-						user: app.user,
+						user: app.user
 					});
 				} else {
 					throw new Error("No component/render prop found");
 				}
 
-				if (Layout) {
-					return <Layout>{content}</Layout>;
+				if (CustomLayout) {
+					return <CustomLayout>{content}</CustomLayout>;
 				}
 
-				return content;
+				return <Layout>{content}</Layout>;
 			}}
 		/>
 	);

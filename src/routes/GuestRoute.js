@@ -3,9 +3,10 @@ import PropTypes from "prop-types";
 import { Route, Redirect } from "react-router-dom";
 import useApp from "hooks/useApp";
 import isInMaintenanceMode from "utils/isInMaintenanceMode";
+import Layout from "components/layout/Layout";
 
 const GuestRoute = ({
-	layout: Layout,
+	layout: CustomLayout,
 	component: Component,
 	render,
 	...rest
@@ -36,11 +37,11 @@ const GuestRoute = ({
 					throw new Error("No component/render prop found");
 				}
 
-				if (Layout) {
-					return <Layout>{content}</Layout>;
+				if (CustomLayout) {
+					return <CustomLayout>{content}</CustomLayout>;
 				}
 
-				return content;
+				return <Layout>{content}</Layout>;
 			}}
 		/>
 	);

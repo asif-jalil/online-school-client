@@ -17,7 +17,7 @@ const LoginForm = ({ onSignInSuccess }) => {
 
 		setState({ ...state, loading: true });
 
-		API.post("/api/auth/login", {
+		API.post("/auth/login", {
 			email: state.email,
 			password: state.password
 		})
@@ -27,7 +27,6 @@ const LoginForm = ({ onSignInSuccess }) => {
 				onSignInSuccess(res.token, res.user);
 			})
 			.catch(err => {
-				console.log({ err });
 				setState({ ...state, loading: false, error: err.response.data });
 			});
 	};
