@@ -254,7 +254,7 @@
   --cloudhr-dropdown-dark-link-color: #e1e1e1;
   --cloudhr-dropdown-dark-link-hover-color: #fff;
   --cloudhr-dropdown-dark-link-hover-bg: rgba(255, 255, 255, 0.15);
-  --cloudhr-dropdown-dark-link-active-color: var(--cloudhr-primary);
+  --cloudhr-dropdown-dark-link-active-color: #fff;
   --cloudhr-dropdown-dark-link-active-bg: #057bde;
   --cloudhr-dropdown-dark-link-disabled-color: #949494;
   --cloudhr-dropdown-dark-header-color: #949494;
@@ -4060,7 +4060,7 @@ textarea.form-control-lg {
   background-color: #f2f2f2;
 }
 .dropdown-item.active, .dropdown-item:active {
-  color: var(--cloudhr-primary);
+  color: #fff;
   text-decoration: none;
   background-color: #057bde;
 }
@@ -4102,7 +4102,7 @@ textarea.form-control-lg {
   background-color: rgba(255, 255, 255, 0.15);
 }
 .dropdown-menu-dark .dropdown-item.active, .dropdown-menu-dark .dropdown-item:active {
-  color: var(--cloudhr-primary);
+  color: #fff;
   background-color: #057bde;
 }
 .dropdown-menu-dark .dropdown-item.disabled, .dropdown-menu-dark .dropdown-item:disabled {

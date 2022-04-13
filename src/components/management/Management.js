@@ -19,7 +19,10 @@ const getRoutes = url => [
 		component: Students,
 		exact: true
 	},
-
+	{
+		route: Redirect,
+		to: "/"
+	}
 ];
 
 const Management = () => {
@@ -28,7 +31,6 @@ const Management = () => {
 
 	return (
     <>
-      <h1>management</h1>
 			<Switch>
 				{routes.map((route, i) => {
 					const { route: Route, ...rest } = route;

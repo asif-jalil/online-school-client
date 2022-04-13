@@ -365,6 +365,12 @@ $card-cap-padding-y: $spacer !default;
 $card-cap-padding-x: 1.25rem !default;
 $card-bg: var(--#{$variable-prefix}card-bg);
 
+//*-----------------------------------------------
+//|   Dropdown
+//-----------------------------------------------*/
+$dropdown-link-active-color: $white;
+
+
 //*=============================================
 //|   Theme Specific
 //=============================================

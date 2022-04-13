@@ -1,6 +1,7 @@
 import { APP_LOADED } from "actionTypes/appActionTypes";
 import Auth from "components/auth/Auth";
 import Dashboard from "components/dashboard/Dashboard";
+import Management from "components/management/Management";
 import Profile from "components/profile/Profile";
 import useApp from "hooks/useApp";
 import usePrevious from "hooks/usePrevious";
@@ -32,8 +33,7 @@ const routes = [
 		route: AuthRoute,
 		path: "/management",
 		permission: [ADMIN],
-		component: Profile,
-		exact: true
+		component: Management
 	},
 	{
 		route: GuestRoute,
