@@ -32,6 +32,24 @@ const routes = [
 		to: "/management/students",
 		icon: "fas fa-user-graduate",
 		permission: [ADMIN]
+	},
+	{
+		label: "My Courses",
+		to: "/my-courses",
+		icon: "fas fa-user-graduate",
+		permission: [TEACHER]
+	},
+	{
+		label: "Courses",
+		to: "/courses",
+		icon: "fas fa-user-graduate",
+		permission: [TEACHER, STUDENT]
+	},
+	{
+		label: "Enrolled Courses",
+		to: "/courses/enrolled",
+		icon: "fas fa-user-graduate",
+		permission: [TEACHER, STUDENT]
 	}
 ];
 

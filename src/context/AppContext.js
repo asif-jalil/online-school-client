@@ -4,8 +4,9 @@ import appReducer from "reducers/appReducer";
 const AppContext = createContext();
 
 const initialState = {
-	loading: true,
 	user: null,
+	courses: [],
+	enrolled: []
 };
 
 const AppProvider = props => {

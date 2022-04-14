@@ -1,5 +1,9 @@
 import { APP_LOADED } from "actionTypes/appActionTypes";
 import Auth from "components/auth/Auth";
+import Course from "components/courses/Course";
+import Courses from "components/courses/Courses";
+import CreateCourse from "components/courses/CreateCourse";
+import MyCourses from "components/courses/MyCourses";
 import Dashboard from "components/dashboard/Dashboard";
 import Management from "components/management/Management";
 import Profile from "components/profile/Profile";
@@ -14,7 +18,7 @@ import GuestRoute from "routes/GuestRoute";
 import API from "utils/API";
 import authTokenStorage from "utils/authTokenStorage";
 import generateURL from "utils/generateURL";
-import { ADMIN } from "utils/role.const";
+import { ADMIN, STUDENT, TEACHER } from "utils/role.const";
 
 const routes = [
 	{
@@ -27,6 +31,25 @@ const routes = [
 		route: AuthRoute,
 		path: "/profile",
 		component: Profile,
+		exact: true
+	},
+	{
+		route: AuthRoute,
+		path: "/courses",
+		component: Courses
+	},
+	{
+		route: AuthRoute,
+		path: `/my-courses`,
+		component: MyCourses,
+		permission: [TEACHER],
+		exact: true
+	},
+	{
+		route: AuthRoute,
+		path: `/create-course`,
+		component: CreateCourse,
+		permission: [TEACHER],
 		exact: true
 	},
 	{
@@ -62,10 +85,11 @@ function App() {
 			.then(res => res.data)
 			.then(res => {
 				if (res && res.user) {
-					const { brands, ...user } = res.user;
+					console.log(res.user);
+					const { courses, ...user } = res.user;
 					dispatch({
 						type: APP_LOADED,
-						payload: { user, brands }
+						payload: { user, courses }
 					});
 				} else {
 					authTokenStorage.removeToken();
@@ -101,6 +125,7 @@ function App() {
 					const { route: Route, ...rest } = route;
 					return <Route key={i} {...rest} />;
 				})}
+				<AuthRoute path="/course/:domain" component={Course} />
 				<Redirect to="/" />
 			</Switch>
 		</>

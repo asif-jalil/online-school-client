@@ -9,12 +9,13 @@ const SignUp = () => {
   const dispatch = useAppDispatch();
 
 	const handleFormSignUp = (token, authData) => {
-		const { brands, ...user } = authData;
+		const { courses, ...user } = authData;
 		authTokenStorage.setToken(token);
 		dispatch({
 			type: SIGN_UP,
 			payload: {
-				user
+        user,
+        courses
 			}
 		});
   };

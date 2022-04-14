@@ -9,12 +9,13 @@ const Login = () => {
   const dispatch = useAppDispatch();
 
 	const handleSignIn = (token, authData) => {
-		const {...user } = authData;
+		const {courses, ...user} = authData;
 		authTokenStorage.setToken(token);
 		dispatch({
 			type: SIGN_IN,
 			payload: {
 				user,
+				courses
 			}
 		});
   };
