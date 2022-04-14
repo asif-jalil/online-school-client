@@ -27,7 +27,7 @@ const CreateCourse = () => {
 			.then(res => {
 				toast.success(res.message);
 				setTimeout(() => {
-					history.push("/my-courses");
+					history.push(`/course/${res.course.courseDomain}/edit`);
         }, 1000);
         dispatch({
           type: CREATE_COURSE,
