@@ -6,7 +6,7 @@ const AppContext = createContext();
 const initialState = {
 	user: null,
 	courses: [],
-	enrolled: []
+	enrolledCourses: []
 };
 
 const AppProvider = props => {

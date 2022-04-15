@@ -4,3 +4,4 @@ export const SIGN_UP = "SIGN_UP";
 export const SIGN_OUT = "SIGN_OUT";
 export const UPDATE_USER = "UPDATE_USER";
 export const CREATE_COURSE = "CREATE_COURSE";
+export const CREATE_ENROLLMENT = "CREATE_ENROLLMENT";

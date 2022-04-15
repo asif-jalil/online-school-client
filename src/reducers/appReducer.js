@@ -4,7 +4,8 @@ import {
 	SIGN_UP,
 	SIGN_OUT,
 	UPDATE_USER,
-	CREATE_COURSE
+	CREATE_COURSE,
+	CREATE_ENROLLMENT
 } from "../actionTypes/appActionTypes";
 
 const appReducer = (state, action) => {
@@ -15,28 +16,32 @@ const appReducer = (state, action) => {
 			return {
 				...state,
 				user: payload.user || null,
-				courses: payload.courses || []
+				courses: payload.courses || [],
+				enrolledCourses: payload.enrolledCourses || []
 			};
 		}
 		case SIGN_IN: {
 			return {
 				...state,
 				user: payload.user,
-				courses: payload.courses
+				courses: payload.courses,
+				enrolledCourses: payload.enrolledCourses
 			};
 		}
 		case SIGN_UP: {
 			return {
 				...state,
 				user: payload.user,
-				courses: payload.courses
+				courses: payload.courses,
+				enrolledCourses: payload.enrolledCourses
 			};
 		}
 		case SIGN_OUT: {
 			return {
 				...state,
 				user: null,
-				courses: []
+				courses: [],
+				enrolledCourses: []
 			};
 		}
 		case UPDATE_USER: {
@@ -44,6 +49,12 @@ const appReducer = (state, action) => {
 		}
 		case CREATE_COURSE: {
 			return { ...state, courses: [...state.courses, payload.course] };
+		}
+		case CREATE_ENROLLMENT: {
+			return {
+				...state,
+				enrolledCourses: [...state.enrolledCourses, payload.enrolledCourse]
+			};
 		}
 		default: {
 			throw new Error(`Unsupported action type: ${type}`);

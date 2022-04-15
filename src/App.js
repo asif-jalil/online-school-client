@@ -93,10 +93,10 @@ function App() {
 			.then(res => res.data)
 			.then(res => {
 				if (res && res.user) {
-					const { courses, ...user } = res.user;
+					const { courses, enrolledCourses, ...user } = res.user;
 					dispatch({
 						type: APP_LOADED,
-						payload: { user, courses }
+						payload: { user, courses, enrolledCourses }
 					});
 				} else {
 					authTokenStorage.removeToken();
