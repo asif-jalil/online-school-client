@@ -6,7 +6,6 @@ import MyCourses from "components/courses/MyCourses";
 import Dashboard from "components/dashboard/Dashboard";
 import Management from "components/management/Management";
 import Profile from "components/profile/Profile";
-import useApp from "hooks/useApp";
 import usePrevious from "hooks/usePrevious";
 import { useCallback, useEffect } from "react";
 import { Switch } from "react-router-dom";
@@ -17,9 +16,10 @@ import GuestRoute from "routes/GuestRoute";
 import API from "utils/API";
 import authTokenStorage from "utils/authTokenStorage";
 import generateURL from "utils/generateURL";
-import { ADMIN, STUDENT, TEACHER } from "utils/role.const";
+import { ADMIN, TEACHER } from "utils/role.const";
 import ViewCourse from "components/courses/ViewCourse";
 import EditCourse from "components/courses/EditCourse";
+import useAppDispatch from "hooks/useAppDispatch";
 
 const routes = [
 	{
@@ -84,7 +84,7 @@ const routes = [
 ];
 
 function App() {
-	const [app, dispatch] = useApp();
+	const dispatch = useAppDispatch()
 	const location = useLocation();
 	const prevLocation = usePrevious(location);
 

@@ -1,5 +1,4 @@
 import PageLoader from "components/common/PageLoader";
-import useUser from "hooks/useUser";
 import React, { useEffect, useState } from "react";
 import { Row } from "react-bootstrap";
 import { toast } from "react-toastify";
